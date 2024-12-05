@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palestrino</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Link para Font Awesome -->
+</head>
+<body>
+    <header>
+        <h1>Palestrino</h1>
+        <span class="cart-icon" onclick="openModal()"><i class="fas fa-shopping-cart"></i> Carrinho</span>
+    </header>
+    
+    <div class="container">
+        <!-- Exemplo de produtos -->
+        <div class="product" onclick="showProductDetails('Camisa Adidas Palmeiras 2 - 2017', 'imagens/cami1.webp', 229)">
+            <img src="imagens/camisa_palmeiras_vintage_segunda_academia_masculina_847_1_20220408102716.webp" alt="Camisa Palmeiras Vintage Segunda Academia Masculina">
+            <h2>Camisa Palmeiras Vintage Segunda Academia Masculina</h2>
+            <p class="price-highlight">R$ 229,00</p>
+            <button class="buy-button">Comprar <i class="fas fa-cart-plus"></i></button>
+        </div>
+        
+        <div class="product" onclick="showProductDetails('Camisa Palmeiras Retrô 1998 Branco Masculina', 'imagens/camisa_palmeiras_retro_1998_branco_masculina_3206_1_19a5e2486190864635625ba601ac0ae9.webp', 209)">
+            <img src="imagens/camisa_palmeiras_retro_1998_branco_masculina_3206_2_9a8e3bbb822d2ac5cba157906e627f30.webp" alt="Camisa Palmeiras Retrô 1998 Branco Masculina">
+            <h2>Camisa Palmeiras Retrô 1998 Branco Masculina</h2>
+            <p class="price-highlight">R$ 209,00</p>
+            <button class="buy-button">Comprar <i class="fas fa-cart-plus"></i></button>
+        </div>
+        <div class="product" onclick="showProductDetails('Camisa Palmeiras Retrô 1999 Libertadores Verde Masculina', 'imagens/2 Camisa Palmeiras Retrô 1999 Libertadores Verde Masculina.webp', 229)">
+            <img src="imagens/Camisa Palmeiras Retrô 1999 Libertadores Verde Masculina.webp">
+            <h2>Camisa Palmeiras Retrô 1999 Libertadores Verde Masculina</h2>
+            <p class="price-highlight">R$ 229,00</p>
+            <button class="buy-button">Comprar <i class="fas fa-cart-plus"></i></button>
+        </div>
+        <div class="product" onclick="showProductDetails('Camisa Palmeiras Retrô Goleiro 1989 Manga Curta Masculina', 'imagens/4 Camisa Palmeiras Retrô Goleiro 1989 Manga Curta Masculina.webp', 280)">
+            <img src="imagens/Camisa Palmeiras Retrô Goleiro 1989 Manga Curta Masculina.webp" alt="Camisa Palmeiras Retrô Goleiro 1989 Manga Curta Masculina">
+            <h2>Camisa Palmeiras Retrô Goleiro 1989 Manga Curta Masculina</h2>
+            <p class="price-highlight">R$ 280,00</p>
+            <button class="buy-button">Comprar <i class="fas fa-cart-plus"></i></button>
+        </div>
+        <div class="product" onclick="showProductDetails('Camisa Palmeiras Retrô 1973 Verde Feminina', 'imagens/5 Camisa Palmeiras Retrô 1973 Verde Feminina.webp', 180)">
+            <img src="imagens/Camisa Palmeiras Retrô 1973 Verde Feminina.webp">
+            <h2>Camisa Palmeiras Retrô 1973 Verde Feminina</h2>
+            <p class="price-highlight">R$ 180,00</p> 
+            <button class="buy-button">Comprar <i class="fas fa-cart-plus"></i></button>
+        </div>
+        <div class="product" onclick="showProductDetails('Camisa Palmeiras Retrô Goleiro 1984 Manga Curta Masculina', 'imagens/6 Camisa Palmeiras Retrô Goleiro 1984 Manga Curta Masculina.webp', 320)">
+            <img src="imagens/Camisa Palmeiras Retrô Goleiro 1984 Manga Curta Masculina.webp">
+            <h2>Camisa Palmeiras Retrô Goleiro 1984 Manga Curta Masculina</h2>
+            <p class="price-highlight">R$ 320,00</p>
+            <button class="buy-button">Comprar <i class="fas fa-cart-plus"></i></button>
+        </div>
+        <div class="product" onclick="showProductDetails('Camisa Palmeiras Retrô 1914 Cruz de Savóia Dry Verde Masculina', 'imagens/7Camisa Palmeiras Retrô 1914 Cruz de Savóia Dry Verde Masculina.webp', 240)">
+            <img src="imagens/Camisa Palmeiras Retrô 1914 Cruz de Savóia Dry Verde Masculina.webp">
+            <h2>Camisa Palmeiras Retrô 1914 Cruz de Savóia Dry Verde Masculina</h2>
+            <p class="price-highlight">R$ 240,00</p>
+            <button class="buy-button">Comprar <i class="fas fa-cart-plus"></i></button>
+        </div>
+        <div class="product" onclick="showProductDetails('Camisa Palmeiras Retrô Manga Curta Goleiro 1975 Masculina', 'imagens/8Camisa Palmeiras Retrô Manga Curta Goleiro 1975 Masculina.webp', 170)">
+            <img src="imagens/Camisa Palmeiras Retrô Manga Curta Goleiro 1975 Masculina.webp">
+            <h2>Camisa Palmeiras Retrô Manga Curta Goleiro 1975 Masculina</h2>
+            <p class="price-highlight">R$ 170,00</p> 
+            <button class="buy-button">Comprar <i class="fas fa-cart-plus"></i></button>
+        </div>
+    </div>
+
+    <!-- Modal do Produto -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span onclick="closeProductModal()" class="close-button">&times;</span>
+            <div id="product-details" style="padding: 20px; display: flex;">
+                <img id="product-image" src="" alt="" style="max-width: 300px; margin-right: 20px;">
+                <div style="flex: 1;">
+                    <h2 id="product-name"></h2>
+                    <h3>Preço</h3>
+                    <p class="price-highlight" id="product-price"></p>
+                    <h3>Escolha o Tamanho</h3>
+                    <select id="size">
+                        <option value="P">P</option>
+                        <option value="M">M</option>
+                        <option value="G">G</option>
+                        <option value="GG">GG</option>
+                    </select>
+                    <button id="add-to-cart-button" class="buy-button">Adicionar ao Carrinho <i class="fas fa-cart-plus"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal do Carrinho -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span onclick="closeModal()" class="close-button">&times;</span>
+            <h2>Carrinho de Compras</h2>
+            <div id="cart-items"></div>
+            <h3 id="total-value">Total: R$ 0,00</h3>
+            <button onclick="checkout()" class="buy-button">Finalizar Compra <i class="fas fa-check"></i></button>
+        </div>
+    </div>
+
+    <!-- Modal de Finalização -->
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <span onclick="closeCheckoutModal()" class="close-button">&times;</span>
+            <h2>Finalizar Pedido</h2>
+            <input type="text" id="buyer-name" class="input-field" placeholder="Digite seu nome" required>
+            <div>
+                <label>
+                    <input type="radio" name="delivery-option" value="retirada" checked> Retirada
+                </label>
+                <label>
+                    <input type="radio" name="delivery-option" value="entrega"> Entrega
+                </label>
+            </div>
+            <input type="text" id="address" class="input-field" placeholder="Digite seu endereço" style="display:none;">
+            <button onclick="finalizeOrder()" class="buy-button">Confirmar Pedido <i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Palestrino</p>
+    </footer>
+
+    <script src="scripts.js"></script> 
+</body>
+</html>
